@@ -12,7 +12,7 @@ defmodule PhoenixCrud.UserController do
       user when is_map(user) ->
         render conn, "show", user: user
       _ ->
-        redirect conn, Router.page_path(page: "unauthorized")
+        redirect conn, PhoenixCrud.Router.page_path(page: "unauthorized")
     end
   end
 
@@ -32,7 +32,7 @@ defmodule PhoenixCrud.UserController do
       user when is_map(user) ->
         render conn, "edit", user: user
       _ ->
-        redirect conn, Router.page_path(page: "unauthorized")
+        redirect conn, PhoenixCrud.Router.page_path(page: "unauthorized")
     end
   end
 
@@ -57,9 +57,9 @@ defmodule PhoenixCrud.UserController do
     case user do
       user when is_map(user) ->
         Repo.delete(user)
-        json conn, 200, "{\"location\": \"#{Router.users_path}\"}"
+        json conn, 200, "{\"location\": \"#{PhoenixCrud.Router.users_path}\"}"
       _ ->
-        redirect conn, Router.page_path(page: "unauthorized")
+        redirect conn, PhoenixCrud.Router.page_path(page: "unauthorized")
     end
   end
 end
