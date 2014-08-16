@@ -6,5 +6,6 @@ defmodule PhoenixCrud.Router do
   scope alias: PhoenixCrud do
     get "/", WelcomeController, :index, as: :root
     get "/pages/:page", PageController, :show, as: :page
+    resources "users", UserController
   end
 end
