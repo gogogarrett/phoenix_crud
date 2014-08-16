@@ -1,4 +1,4 @@
-defmodule PingPong.WelcomeView do
-  use PingPong.Views
+defmodule PhoenixCrud.WelcomeView do
+  use PhoenixCrud.Views
 
 end
