@@ -4,6 +4,7 @@
   "ecto": {:package, "0.2.3"},
   "inflex": {:package, "0.2.4"},
   "jazz": {:package, "0.2.0"},
+  "json": {:package, "0.3.0"},
   "linguist": {:package, "0.1.1"},
   "phoenix": {:git, "git://github.com/phoenixframework/phoenix.git", "c2daf480a5c34564e0680ea4d338a7ae7f27c1dd", []},
   "plug": {:package, "0.5.3"},
