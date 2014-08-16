@@ -1,7 +1,7 @@
 defmodule PhoenixCrud.PageController do
   use Phoenix.Controller
 
-  def index(conn, _params) do
-    render conn, "index"
+  def show(conn, %{"page" => "unauthorized"}) do
+    render conn, "unauthorized"
   end
 end
