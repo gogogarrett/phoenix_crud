@@ -3,7 +3,7 @@ defmodule PhoenixCrud.Router do
 
   plug Plug.Static, at: "/static", from: :phoenix_crud
 
-  scope alias: PingPong do
+  scope alias: PhoenixCrud do
     get "/", WelcomeController, :index, as: :root
     get "/pages/:page", PageController, :show, as: :page
   end
