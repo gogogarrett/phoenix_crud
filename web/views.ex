@@ -7,6 +7,7 @@ defmodule PhoenixCrud.Views do
 
       # This block is expanded within all views for aliases, imports, etc
       import PhoenixCrud.I18n
+      alias PhoenixCrud.Router
     end
   end
 

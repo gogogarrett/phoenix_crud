@@ -1,18 +1,19 @@
 defmodule PhoenixCrud.UserController do
   use Phoenix.Controller
+  use Jazz
+  alias PhoenixCrud.Router
+  alias PhoenixCrud.User
 
   def index(conn, _params) do
-    users = Repo.all(PhoenixCrud.User)
-    render conn, "index", users: users
+    render conn, "index", users: Repo.all(User)
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get(PhoenixCrud.User, id)
-    case user do
+    case Repo.get(User, id) do
       user when is_map(user) ->
         render conn, "show", user: user
       _ ->
-        redirect conn, PhoenixCrud.Router.page_path(page: "unauthorized")
+        redirect conn, Router.page_path(page: "unauthorized")
     end
   end
 
@@ -20,46 +21,44 @@ defmodule PhoenixCrud.UserController do
     render conn, "new"
   end
 
-  def create(conn, params) do
-    u = %PhoenixCrud.User{content: params["user"]["content"]}
-    user = Repo.insert(u)
+  def create(conn, %{"user" => %{"content" => content}}) do
+    user = Repo.insert(%User{content: content})
     render conn, "show", user: user
   end
 
   def edit(conn, %{"id" => id}) do
-    user = Repo.get(PhoenixCrud.User, id)
-    case user do
+    case Repo.get(User, id) do
       user when is_map(user) ->
         render conn, "edit", user: user
       _ ->
-        redirect conn, PhoenixCrud.Router.page_path(page: "unauthorized")
+        redirect conn, Router.page_path(page: "unauthorized")
     end
   end
 
   def update(conn, %{"id" => id, "user" => params}) do
-    present_user = Repo.get(PhoenixCrud.User, id)
+    present_user = Repo.get(User, id)
     fields = [content: params["content"], id: present_user.id]
 
-    user = struct(PhoenixCrud.User, fields)
+    user = struct(User, fields)
 
-    case PhoenixCrud.User.validate(user) do
+    case User.validate(user) do
       [] ->
         Repo.update(user)
         # [g] really hacky way to redirect in the client.. (is there a better way?)
-        json conn, 201, "{\"location\": \"#{PhoenixCrud.Router.user_path(id: user.id)}\"}"
+        json conn, 201, JSON.encode!(%{location: Router.user_path(id: user.id)})
       errors ->
         json conn, errors: errors
     end
   end
 
   def destroy(conn, %{"id" => id}) do
-    user = Repo.get(PhoenixCrud.User, id)
+    user = Repo.get(User, id)
     case user do
       user when is_map(user) ->
         Repo.delete(user)
-        json conn, 200, "{\"location\": \"#{PhoenixCrud.Router.users_path}\"}"
+        json conn, 200, JSON.encode!(%{location: Router.users_path})
       _ ->
-        redirect conn, PhoenixCrud.Router.page_path(page: "unauthorized")
+        redirect conn, Router.page_path(page: "unauthorized")
     end
   end
 end
