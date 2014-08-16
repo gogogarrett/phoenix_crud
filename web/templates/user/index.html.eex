@@ -1,0 +1,17 @@
+<div class="col-md-12">
+  <h3>Users</h3>
+
+  <ul>
+    <%= for user <- @users do %>
+      <li>
+        <a href="<%= PhoenixCrud.Router.user_path(id: user.id) %>">
+          <%= user.content %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+
+  <a href="<%= PhoenixCrud.Router.new_user_path%>" class="btn btn-primary">
+    New User
+  </a>
+</div>

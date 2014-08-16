@@ -7,25 +7,26 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Phoenix!</title>
+    <title>Hello World</title>
     <link rel="stylesheet" href="/css/app.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
 
   <body>
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="https://github.com/phoenixframework/phoenix">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
+    <main role="main" class="container">
+      <%= render "nav/nav.html" %>
+
+      <div class="row">
+        <%= @inner %>
       </div>
 
-      <%= @inner %>
-
-      <div class="footer">
-        <p><a href="http://phoenixframework.org">phoenixframework.org</a></p>
-      </div>
-
-    </div> <!-- /container -->
+      <footer class="footer">
+        <p>
+          <a href="http://twitter.com/gogogarrett" target="_blank">
+            Example by gogogarrett
+          </a>
+        </p>
+      </fotter>
+    </main>
   </body>
 </html>
