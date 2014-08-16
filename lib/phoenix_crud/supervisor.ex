@@ -6,10 +6,7 @@ defmodule PhoenixCrud.Supervisor do
   end
 
   def init([]) do
-    children = []
-
-    # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
-    # for other strategies and supported options
-    supervise(children, strategy: :one_for_one)
+    tree = [worker(Repo, [])]
+    supervise(tree, strategy: :one_for_one)
   end
 end
