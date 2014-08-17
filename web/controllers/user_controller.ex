@@ -22,8 +22,15 @@ defmodule PhoenixCrud.UserController do
   end
 
   def create(conn, %{"user" => %{"content" => content}}) do
-    user = Repo.insert(%User{content: content})
-    render conn, "show", user: user
+    user = %User{content: content}
+
+    case User.validate(user) do
+      [] ->
+        user = Repo.insert(user)
+        render conn, "show", user: user
+      errors ->
+        render conn, "new", user: user, errors: errors
+    end
   end
 
   def edit(conn, %{"id" => id}) do
