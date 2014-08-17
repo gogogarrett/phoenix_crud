@@ -43,10 +43,8 @@ defmodule PhoenixCrud.UserController do
   end
 
   def update(conn, %{"id" => id, "user" => params}) do
-    present_user = Repo.get(User, id)
-    fields = [content: params["content"], id: present_user.id]
-
-    user = struct(User, fields)
+    user = Repo.get(User, id)
+    user = %{user | content: params["content"]}
 
     case User.validate(user) do
       [] ->
