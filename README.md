@@ -2,6 +2,8 @@
 
 This is just a simple example of a small CRUD app using Elixir, Postgres and the [Phoenix Framework](https://github.com/phoenixframework/phoenix).
 
+[Blog Post explaning the step by step can be found here](http://gogogarrett.sexy/programming-in-elixir-with-the-phoenix-framework-building-a-basic-CRUD-app/)
+
 # Installation
 
 To start your new Phoenix application you have to:
