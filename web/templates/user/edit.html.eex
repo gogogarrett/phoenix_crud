@@ -3,6 +3,7 @@
 
   <div class="actions">
     <form action="/users/<%= @user.id %>" method="post">
+      <input type="hidden" name="csrf_token" value="<%= csrf_token @conn %>" />
       <div class="form-group">
         <input type="text" name="user[content]" value="<%= @user.content %>" class="form-control" />
       </div>

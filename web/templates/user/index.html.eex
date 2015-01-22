@@ -4,14 +4,14 @@
   <ul>
     <%= for user <- @users do %>
       <li>
-        <a href="<%= Router.user_path(id: user.id) %>">
-          <%= user.content %>
+        <a href="<%= Router.Helpers.user_path(@conn, :show, user.id) %>">
+          <%= user.content %> <%= user.id %>
         </a>
       </li>
     <% end %>
   </ul>
 
-  <a href="<%= Router.new_user_path%>" class="btn btn-primary">
+  <a href="<%= Router.Helpers.user_path(@conn, :new) %>" class="btn btn-primary">
     New User
   </a>
 </div>

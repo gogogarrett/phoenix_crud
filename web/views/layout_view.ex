@@ -1,4 +1,4 @@
 defmodule PhoenixCrud.LayoutView do
-  use PhoenixCrud.Views
-
+  use PhoenixCrud.View
+  alias PhoenixCrud.Router
 end
