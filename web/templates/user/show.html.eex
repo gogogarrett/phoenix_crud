@@ -1,6 +1,6 @@
 <div class="col-md-12">
 
-  <a href="<%= Router.users_path%>" class="btn btn-default btn-sm">
+  <a href="<%= Router.Helpers.user_path(@conn, :index)%>" class="btn btn-default btn-sm">
     Back
   </a>
 
@@ -9,7 +9,7 @@
   </h1>
 
   <div class="actions">
-    <a href="<%= Router.edit_user_path(id: @user.id) %>" class="btn btn-primary">
+    <a href="<%= Router.Helpers.user_path(@conn, :edit, @user.id) %>" class="btn btn-primary">
       Edit
     </a>
 
@@ -28,6 +28,10 @@
     $.ajax({
       url: $that.getAttribute('action'),
       type: "DELETE",
+      beforeSend: function (request)
+      {
+          request.setRequestHeader("X-CSRF-Token", "<%= csrf_token @conn %>");
+      },
       data: $('form').serialize(),
       success: function(data) {
         window.location = data.location;
