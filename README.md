@@ -9,9 +9,10 @@ This is just a simple example of a small CRUD app using Elixir, Postgres and the
 To start your new Phoenix application you have to:
 
 1. Install dependencies with `mix deps.get`
-2. Start Phoenix router with `mix phoenix.start`
+2a. Start Phoenix router with `mix phoenix.server`
+2b. You can also start Phoenix with interactive Elixir shell `iex -S mix phoenix.server`
 3. Configure [Database Settings](https://github.com/gogogarrett/phoenix_crud/blob/master/lib%2Fphoenix_crud%2Frepo.ex) to use your local postgres enviorment.
-4. Run the migrations `mix ecto.migrate Repo`
+4. Run the migrations `mix ecto.migrate PhoenixCrud.Repo`
 5. Enjoy.
 
 Now you can visit `localhost:4000` from your browser.

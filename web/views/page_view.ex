@@ -1,4 +1,3 @@
 defmodule PhoenixCrud.PageView do
-  use PhoenixCrud.Views
-
+  use PhoenixCrud.View
 end
